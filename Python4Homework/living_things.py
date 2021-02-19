@@ -108,3 +108,4 @@ class Tree(Plant):
 class Maple(Tree):
     def __init__(self, sci_name, habitat, no_branches):
         super().__init__(sci_name, habitat, no_branches)
+
