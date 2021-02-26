@@ -97,3 +97,4 @@ class Airplane(Vehicle):
 
     def get_in_air(self):
         return self.in_air
+
