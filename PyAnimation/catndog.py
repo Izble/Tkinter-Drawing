@@ -1,4 +1,5 @@
 import pygame as pg
+import random as rd
 
 
 class CatAnimation(pg.sprite.Sprite):
@@ -39,19 +40,20 @@ class CatAnimation(pg.sprite.Sprite):
 
         self.index = 0
 
-        self.image = self.catDead[self.index]
+        self.lis = [self.catDead, self.catFall, self.catHurt, self.catIdle, self.catRun, self.catSlide, self.catWalk]
+        x = rd.choice(self.lis)
+
+        self.image = x[self.index]
         self.rect = pg.Rect(5, 5, 150, 190)
 
     def update(self):
-        master = [self.catDead, self.catFall, self.catHurt, self.catIdle, self.catRun, self.catSlide, self.catWalk]
 
-        for i in master:
-            m = i
-            self.index += 1
-            if self.index >= len(m):
-                self.index = 0
+        i = rd.choice(self.lis)
+        self.index += 1
+        if self.index >= len(i):
+            self.index = 0
 
-            self.image = m[self.index]
+        self.image = i[self.index]
 
 
 pg.init()
@@ -69,7 +71,7 @@ while running:
     group.update()
     group.draw(screen)
     pg.display.update()
-    clock.tick(15)
+    clock.tick(10)
 
     events = pg.event.get()
     for event in events:
